@@ -6,6 +6,13 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager INSTANCE;
 
+    Agent[] agents;
+
+    public Agent[] Agents {
+        get;
+        set;
+    }
+
 	// Use this for initialization
 	void Start () {
 		if (INSTANCE != null) {
@@ -13,10 +20,6 @@ public class GameManager : MonoBehaviour {
             return;
         }
         INSTANCE = this;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+        Agents = FindObjectsOfType<Agent>();
 	}
 }

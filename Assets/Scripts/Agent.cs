@@ -11,7 +11,14 @@ public class Agent : MonoBehaviour {
         evade,
         path
     }
+    
+    public enum CollisionType {
+        none,
+        collisionPredict,
+        coneCheck
+    }
 
+    public CollisionType collisionType;
     public State curState = State.wait;
     public Transform target;
     public Transform[] path;
@@ -52,7 +59,14 @@ public class Agent : MonoBehaviour {
                 SetState(State.wait);
                 break;
         }
-        //TODO Collision
+        switch (collisionType) {
+            case CollisionType.collisionPredict:
+                PredictCollision();
+                break;
+            case CollisionType.coneCheck:
+                //CheckCones();
+                break;
+        }
     }
 
     public void SetState(State s) {
@@ -100,24 +114,48 @@ public class Agent : MonoBehaviour {
         if (path_index < path.Length - 1) {
             //Check if within range of path point to move to next point
             float distance = Vector2.Distance(path[path_index + 1].position, transform.position);
-            if (distance < 0.1f) {
+            if (distance < .75f) {
                 ++path_index;
             }
 
             distance = Vector2.Distance(target.position, transform.position);
 
             rigidbody.velocity = (path[path_index + 1].position - transform.position).normalized * move_speed * Mathf.Min(distance / slow_down_dist, 1);
-            Debug.Log(distance / slow_down_dist);
             RotateTowards(path[path_index + 1].position);
-        }
-        else {
-            Debug.Log("Error");
+        } else {
+            rigidbody.velocity = Vector2.zero;
         }
     }
 
     void RotateTowards(Vector3 position) {
         Vector3 offset = (position - transform.position).normalized;
         transform.right = Vector3.MoveTowards(transform.right, offset, Time.deltaTime * rotation_speed);
+    }
+
+    void PredictCollision() {
+        Agent closest = this;
+        float maxD = 0;
+        float d;
+        foreach (Agent a in GameManager.INSTANCE.Agents) {
+            d = ApproxDistanceBetween(a, this);
+            if (d > maxD) {
+                closest = a;
+                maxD = d;
+            }
+        }
+        Vector2 dp = closest.transform.position - transform.position;
+        Vector2 dv = closest.rigidbody.velocity - rigidbody.velocity;
+        float t = -1 * Vector2.Dot(dp, dv) / Mathf.Pow(dv.magnitude, 2);
+        Vector2 pc = (Vector2)transform.position + rigidbody.velocity * t;
+        Vector2 pt = (Vector2)closest.transform.position + closest.rigidbody.velocity * t;
+        if (Vector2.Distance(pc, pt) > 2 * transform.localScale.x) {
+            rigidbody.velocity = Quaternion.Euler(0, 0, -10f)*rigidbody.velocity;
+        }
+    }
+
+    float ApproxDistanceBetween(Agent a, Agent b) {
+        float angle = Vector2.Angle(a.rigidbody.velocity, b.rigidbody.velocity)*Mathf.Rad2Deg;
+        return angle - Vector2.Distance(a.transform.position, b.transform.position);
     }
 
 }
