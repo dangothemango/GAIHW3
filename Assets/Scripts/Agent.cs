@@ -25,12 +25,13 @@ public class Agent : MonoBehaviour {
     public float rotation_speed;
     public float move_speed;
     public float slow_down_dist;
-    public Transform wander_target;
     public float cone_angle;
-    Quaternion starting_angle = Quaternion.AngleAxis(-60, Vector3.up);
-    Quaternion step_angle = Quaternion.AngleAxis(5, Vector3.up);
-    public int path_index;
-    public Vector2 targetOffset = Vector2.zero;
+    public float cone_distance;
+    public int num_whiskers;
+
+    Transform wander_target;
+    int path_index = 0;
+    Vector2 targetOffset = Vector2.zero;
     Vector3 dir = Vector3.zero;
 
     Rigidbody2D RB;
@@ -155,24 +156,29 @@ public class Agent : MonoBehaviour {
                 Debug.Log(string.Format("{0} avoiding {1}", this.name, a.name));
                 RB.velocity = RB.velocity - pc;
                 RB.velocity = RB.velocity.normalized * move_speed;
-                return;
             }
         }
     }
 
     void ConeCheck() {
+        Quaternion starting_angle = Quaternion.AngleAxis(-cone_angle/2, Vector3.up);
+        Quaternion step_angle = Quaternion.AngleAxis(cone_angle/num_whiskers, Vector3.up);
+
         RaycastHit hit;
         var angle = transform.rotation * starting_angle;
         var direction = angle * Vector3.forward;
 
-        for (var i = 0; i < 24; ++i)
-        {
-            if (Physics.Raycast(transform.position, direction, out hit, 500))
-            {
-                var enemy = hit.collider.GetComponent<Enemy>();
-                if (enemy)
-                {
-                    //Enemy was seen
+        for (var i = 0; i < 3; ++i) {
+            Debug.DrawRay(transform.position, direction, Color.white, 0);
+            if (Physics.Raycast(transform.position, direction, out hit, cone_distance)) {
+                var hit_agent = hit.collider.GetComponent<Agent>();
+                if (hit_agent) {
+                    Vector2 dp = hit_agent.transform.position - transform.position;
+                    Vector2 dv = hit_agent.RB.velocity - RB.velocity;
+                    float t = -1 * Vector2.Dot(dp, dv) / Mathf.Pow(dv.magnitude, 2);
+                    Vector2 pc = (Vector2)transform.position + RB.velocity * t;
+                    RB.velocity -= pc;
+                    RB.velocity = RB.velocity.normalized * move_speed;
                 }
             }
 

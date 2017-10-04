@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec588878e1647d458203e9902771d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionType: 2
   curState: 4
   target: {fileID: 0}
   path:
@@ -147,8 +148,9 @@ MonoBehaviour:
   rotation_speed: 5
   move_speed: 1
   slow_down_dist: 2
-  wander_target: {fileID: 0}
-  path_index: 0
+  cone_angle: 60
+  cone_distance: 500
+  num_whiskers: 3
 --- !u!212 &212208145236199232
 SpriteRenderer:
   m_ObjectHideFlags: 1
