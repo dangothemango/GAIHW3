@@ -27,6 +27,7 @@ public class Agent : MonoBehaviour {
     public float slow_down_dist;
     public Transform wander_target;
     public int path_index;
+    public Vector2 targetOffset = Vector2.zero;
     Vector3 dir = Vector3.zero;
 
     Rigidbody2D rigidbody;
@@ -111,19 +112,26 @@ public class Agent : MonoBehaviour {
     }
 
     void FollowPath() {
-        if (path_index < path.Length - 1) {
-            //Check if within range of path point to move to next point
-            float distance = Vector2.Distance(path[path_index + 1].position, transform.position);
-            if (distance < .75f) {
-                ++path_index;
+        float minDist = float.MaxValue;
+        int minI = 0; ;
+        for (int i = 0; i < path.Length; i++ ) {
+            if (minDist > Vector2.Distance(path[i].position, transform.position)) {
+                minDist = Vector2.Distance(path[i].position, transform.position);
+                minI = i;
             }
+        }
+        if (minI < path.Length - 1) {
+            //Check if within range of path point to move to next point
+            float distance = Vector2.Distance(path[minI + 1].position+(Vector3)targetOffset, transform.position);
 
             distance = Vector2.Distance(target.position, transform.position);
 
-            rigidbody.velocity = (path[path_index + 1].position - transform.position).normalized * move_speed * Mathf.Min(distance / slow_down_dist, 1);
-            RotateTowards(path[path_index + 1].position);
+            rigidbody.velocity = (path[minI + 1].position - transform.position+ (Vector3)targetOffset).normalized * move_speed * Mathf.Min(distance / slow_down_dist, 1);
+            RotateTowards(path[minI + 1].position+(Vector3)targetOffset);
         } else {
-            rigidbody.velocity = Vector2.zero;
+            Debug.Log(path[minI].name);
+            SetTarget(path[path.Length - 1]);
+            SetState(State.pursue);
         }
     }
 
@@ -142,7 +150,7 @@ public class Agent : MonoBehaviour {
             Vector2 pt = (Vector2)a.transform.position + a.rigidbody.velocity * t;
             if (Vector2.Distance(pc, pt) > 2 * transform.localScale.x) {
                 Debug.Log(string.Format("{0} avoiding {1}", this.name, a.name));
-                rigidbody.velocity = Quaternion.Euler(0, 0, -10f) * rigidbody.velocity;
+                rigidbody.velocity = Vector3.RotateTowards(rigidbody.velocity.normalized,-1*a.rigidbody.velocity.normalized,rotation_speed,float.MaxValue).normalized*move_speed;
                 return;
             }
         }

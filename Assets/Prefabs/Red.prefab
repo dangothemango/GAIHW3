@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4770101674057050}
   - component: {fileID: 114921365555054842}
   - component: {fileID: 50170303442861738}
-  - component: {fileID: 61387330684647312}
+  - component: {fileID: 58825866460199038}
   m_Layer: 0
   m_Name: Red
   m_TagString: Untagged
@@ -92,8 +92,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61387330684647312
-BoxCollider2D:
+--- !u!58 &58825866460199038
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -105,18 +105,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
-    newSize: {x: 5.12, y: 5.12}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.12, y: 5.12}
-  m_EdgeRadius: 0
+  m_Radius: 2
 --- !u!114 &114921365555054842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,6 +141,7 @@ MonoBehaviour:
   slow_down_dist: 2
   wander_target: {fileID: 0}
   path_index: 0
+  targetOffset: {x: 0, y: 0}
 --- !u!212 &212462129171292710
 SpriteRenderer:
   m_ObjectHideFlags: 1
