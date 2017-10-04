@@ -133,23 +133,18 @@ public class Agent : MonoBehaviour {
     }
 
     void PredictCollision() {
-        Agent closest = this;
-        float maxD = 0;
-        float d;
         foreach (Agent a in GameManager.INSTANCE.Agents) {
-            d = ApproxDistanceBetween(a, this);
-            if (d > maxD) {
-                closest = a;
-                maxD = d;
+            if (a == this) continue;
+            Vector2 dp = a.transform.position - transform.position;
+            Vector2 dv = a.rigidbody.velocity - rigidbody.velocity;
+            float t = -1 * Vector2.Dot(dp, dv) / Mathf.Pow(dv.magnitude, 2);
+            Vector2 pc = (Vector2)transform.position + rigidbody.velocity * t;
+            Vector2 pt = (Vector2)a.transform.position + a.rigidbody.velocity * t;
+            if (Vector2.Distance(pc, pt) > 2 * transform.localScale.x) {
+                Debug.Log(string.Format("{0} avoiding {1}", this.name, a.name));
+                rigidbody.velocity = Quaternion.Euler(0, 0, -10f) * rigidbody.velocity;
+                return;
             }
-        }
-        Vector2 dp = closest.transform.position - transform.position;
-        Vector2 dv = closest.rigidbody.velocity - rigidbody.velocity;
-        float t = -1 * Vector2.Dot(dp, dv) / Mathf.Pow(dv.magnitude, 2);
-        Vector2 pc = (Vector2)transform.position + rigidbody.velocity * t;
-        Vector2 pt = (Vector2)closest.transform.position + closest.rigidbody.velocity * t;
-        if (Vector2.Distance(pc, pt) > 2 * transform.localScale.x) {
-            rigidbody.velocity = Quaternion.Euler(0, 0, -10f)*rigidbody.velocity;
         }
     }
 
