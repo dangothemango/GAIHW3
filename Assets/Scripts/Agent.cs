@@ -148,9 +148,10 @@ public class Agent : MonoBehaviour {
             float t = -1 * Vector2.Dot(dp, dv) / Mathf.Pow(dv.magnitude, 2);
             Vector2 pc = (Vector2)transform.position + rigidbody.velocity * t;
             Vector2 pt = (Vector2)a.transform.position + a.rigidbody.velocity * t;
-            if (Vector2.Distance(pc, pt) > 2 * transform.localScale.x) {
+            if (Vector2.Distance(pc, pt) < 2 * transform.localScale.x) {
                 Debug.Log(string.Format("{0} avoiding {1}", this.name, a.name));
-                rigidbody.velocity = Vector3.RotateTowards(rigidbody.velocity.normalized,-1*a.rigidbody.velocity.normalized,rotation_speed,float.MaxValue).normalized*move_speed;
+                rigidbody.velocity = rigidbody.velocity - pc;
+                rigidbody.velocity = rigidbody.velocity.normalized * move_speed;
                 return;
             }
         }
