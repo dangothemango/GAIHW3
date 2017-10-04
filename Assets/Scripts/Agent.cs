@@ -27,6 +27,8 @@ public class Agent : MonoBehaviour {
     public float slow_down_dist;
     public Transform wander_target;
     public float cone_angle;
+    Quaternion starting_angle = Quaternion.AngleAxis(-60, Vector3.up);
+    Quaternion step_angle = Quaternion.AngleAxis(5, Vector3.up);
     public int path_index;
     public Vector2 targetOffset = Vector2.zero;
     Vector3 dir = Vector3.zero;
@@ -159,12 +161,22 @@ public class Agent : MonoBehaviour {
     }
 
     void ConeCheck() {
-        Vector3 target_dir = target.position - transform.position;
-        float check_angle = Vector3.Angle(target_dir, transform.forward);
+        RaycastHit hit;
+        var angle = transform.rotation * starting_angle;
+        var direction = angle * Vector3.forward;
 
-        //Check if the angle is small enough i.e. in the cone of view
-        if (check_angle < cone_angle) {
+        for (var i = 0; i < 24; ++i)
+        {
+            if (Physics.Raycast(transform.position, direction, out hit, 500))
+            {
+                var enemy = hit.collider.GetComponent<Enemy>();
+                if (enemy)
+                {
+                    //Enemy was seen
+                }
+            }
 
+            direction = step_angle * direction;
         }
     }
 
