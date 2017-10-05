@@ -51,7 +51,7 @@ public class Agent : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        DisplayText.text = curState.ToString();
+            DisplayText.text = curState.ToString();
         switch (curState) {
             case State.wait:
                 break;
@@ -96,10 +96,6 @@ public class Agent : MonoBehaviour {
         line.positionCount = 2;
         line.SetPosition(0, new Vector3(transform.position.x, transform.position.y, 0));
         line.SetPosition(1, new Vector3(t.x, t.y, 0));
-    }
-
-    void ShowCircle() {
-
     }
 
     void Wander() {
