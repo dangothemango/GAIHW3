@@ -31,6 +31,7 @@ public class Agent : MonoBehaviour {
     public float avoidanceForce;
     public int num_whiskers;
 
+    SpriteRenderer circle;
     LineRenderer line;
     Ray ray;
     private Vector3 startVertex;
@@ -47,11 +48,13 @@ public class Agent : MonoBehaviour {
         DisplayText = GetComponent<Text>();
         line = GetComponent<LineRenderer>();
         RB = GetComponent<Rigidbody2D>();
+        circle = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update() {
             DisplayText.text = curState.ToString();
+        
         switch (curState) {
             case State.wait:
                 break;
