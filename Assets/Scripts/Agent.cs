@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Agent : MonoBehaviour {
 
@@ -30,6 +31,10 @@ public class Agent : MonoBehaviour {
     public float avoidanceForce;
     public int num_whiskers;
 
+    LineRenderer line;
+    Ray ray;
+    private Vector3 startVertex;
+    Text DisplayText;
     Transform wander_target;
     int path_index = 0;
     Vector2 targetOffset = Vector2.zero;
@@ -39,12 +44,14 @@ public class Agent : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        DisplayText = GetComponent<Text>();
+        line = GetComponent<LineRenderer>();
         RB = GetComponent<Rigidbody2D>();
-
     }
 
     // Update is called once per frame
     void Update() {
+        DisplayText.text = curState.ToString();
         switch (curState) {
             case State.wait:
                 break;
@@ -84,22 +91,34 @@ public class Agent : MonoBehaviour {
         target = t;
     }
 
+    void ShowLine(Vector3 t) {
+        ray = Camera.main.ScreenPointToRay(transform.position);
+        line.positionCount = 2;
+        line.SetPosition(0, new Vector3(transform.position.x, transform.position.y, 0));
+        line.SetPosition(1, new Vector3(t.x, t.y, 0));
+    }
+
+    void ShowCircle() {
+
+    }
+
     void Wander() {
         if (dir == Vector3.zero || Random.Range(0, 1.0f) > .99f) {
-            newDir();
+            NewDir();
         }
-        Debug.DrawLine(transform.position, transform.position + dir, Color.black);
+
+        ShowLine(transform.position + dir);
         RB.velocity = dir.normalized * move_speed / 2;
         RotateTowards(transform.position + dir);
     }
 
-    public void newDir() {
+    public void NewDir() {
         dir = (Vector2)wander_target.position + Random.insideUnitCircle - (Vector2)transform.position;
     }
 
     void Pursue() {
         float distance = Vector2.Distance(target.position, transform.position);
-
+        ShowLine(target.position);
 
         if (distance > .5f) {
             RotateTowards(target.position);
@@ -113,6 +132,7 @@ public class Agent : MonoBehaviour {
     void Evade() {
         Vector3 v = transform.position - target.position;
         RotateTowards(transform.position + v);
+        ShowLine(transform.position + v);
         RB.velocity = v.normalized * Time.deltaTime * move_speed;
     }
 
@@ -125,6 +145,7 @@ public class Agent : MonoBehaviour {
                 minI = i;
             }
         }
+        ShowLine(path[minI + 1].position + (Vector3)targetOffset);
         if (minI < path.Length - 1) {
             //Check if within range of path point to move to next point
             float distance = Vector2.Distance(path[minI + 1].position+(Vector3)targetOffset, transform.position);
@@ -191,5 +212,4 @@ public class Agent : MonoBehaviour {
         float angle = Vector2.Angle(a.RB.velocity, b.RB.velocity)*Mathf.Rad2Deg;
         return angle - Vector2.Distance(a.transform.position, b.transform.position);
     }
-
 }
