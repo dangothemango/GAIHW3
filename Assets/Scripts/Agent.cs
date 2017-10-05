@@ -27,6 +27,7 @@ public class Agent : MonoBehaviour {
     public float slow_down_dist;
     public float cone_angle;
     public float cone_distance;
+    public float avoidanceForce;
     public int num_whiskers;
 
     Transform wander_target;
@@ -146,39 +147,39 @@ public class Agent : MonoBehaviour {
 
     void PredictCollision() {
         foreach (Agent a in GameManager.INSTANCE.Agents) {
-            if (a == this) continue;
+            if (a.name[0] == this.name[0]) continue;
             Vector2 dp = a.transform.position - transform.position;
             Vector2 dv = a.RB.velocity - RB.velocity;
             float t = -1 * Vector2.Dot(dp, dv) / Mathf.Pow(dv.magnitude, 2);
+            if (t > 2f) return;
             Vector2 pc = (Vector2)transform.position + RB.velocity * t;
             Vector2 pt = (Vector2)a.transform.position + a.RB.velocity * t;
             if (Vector2.Distance(pc, pt) < 2 * transform.localScale.x) {
                 Debug.Log(string.Format("{0} avoiding {1}", this.name, a.name));
-                RB.velocity = RB.velocity - pc;
-                RB.velocity = RB.velocity.normalized * move_speed;
+                RB.AddForce((RB.velocity - pc).normalized * avoidanceForce);
+                return;
             }
         }
     }
 
     void ConeCheck() {
-        Quaternion starting_angle = Quaternion.AngleAxis(-cone_angle/2, Vector3.up);
-        Quaternion step_angle = Quaternion.AngleAxis(cone_angle/num_whiskers, Vector3.up);
+        
+        Quaternion start_angle = Quaternion.AngleAxis(-1*cone_angle / 2, transform.forward);
+        Quaternion step_angle = Quaternion.AngleAxis(cone_angle / num_whiskers, transform.forward);
+        Vector2 direction = start_angle * transform.right;
 
-        RaycastHit hit;
-        var angle = transform.rotation * starting_angle;
-        var direction = angle * Vector3.forward;
-
-        for (var i = 0; i < 3; ++i) {
-            Debug.DrawRay(transform.position, direction, Color.white, 0);
-            if (Physics.Raycast(transform.position, direction, out hit, cone_distance)) {
+        for (int i = 0; i < num_whiskers; ++i) {
+            Debug.DrawRay(transform.position, direction.normalized*cone_distance, Color.white, 0);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction,cone_distance);
+            if (hit.collider !=null) {
+                Debug.LogWarning("Hit");
                 var hit_agent = hit.collider.GetComponent<Agent>();
-                if (hit_agent) {
-                    Vector2 dp = hit_agent.transform.position - transform.position;
-                    Vector2 dv = hit_agent.RB.velocity - RB.velocity;
-                    float t = -1 * Vector2.Dot(dp, dv) / Mathf.Pow(dv.magnitude, 2);
-                    Vector2 pc = (Vector2)transform.position + RB.velocity * t;
-                    RB.velocity -= pc;
-                    RB.velocity = RB.velocity.normalized * move_speed;
+                if (hit_agent.name[0] != this.name[0]) {
+                    Debug.Log(string.Format("{0} avoiding {1}", this.name, hit_agent.name));
+                    RB.AddForce(((Vector2)hit_agent.transform.position-RB.velocity).normalized * avoidanceForce);
+                    return;
+                } else {
+                    Debug.LogError("Raycast hit a non red agent");
                 }
             }
 

@@ -1006,30 +1006,47 @@ Prefab:
       propertyPath: rotation_speed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 50710133243768662, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: avoidanceForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: collisionType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1962273414580662, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655492840590054, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: cone_distance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1962273414580662, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: num_whiskers
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61580693542954952, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &607370973 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1997374915542642, guid: f274b0babb3bf864796ef12d4d016dda,
-    type: 2}
-  m_PrefabInternal: {fileID: 847795902}
---- !u!58 &607370974
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 607370973}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 2
 --- !u!1001 &633636013
 Prefab:
   m_ObjectHideFlags: 0
@@ -1166,6 +1183,28 @@ Prefab:
         type: 2}
       propertyPath: rotation_speed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 50170303442861738, guid: f274b0babb3bf864796ef12d4d016dda,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114921365555054842, guid: f274b0babb3bf864796ef12d4d016dda,
+        type: 2}
+      propertyPath: avoidanceForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072055932404934, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997374915542642, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072055932404934, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1359,19 +1398,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4770101674057050, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4770101674057050, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.008727774
       objectReference: {fileID: 0}
     - target: {fileID: 4770101674057050, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4770101674057050, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9999619
       objectReference: {fileID: 0}
     - target: {fileID: 4770101674057050, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
       propertyPath: m_RootOrder
@@ -1469,6 +1508,28 @@ Prefab:
         type: 2}
       propertyPath: rotation_speed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 50170303442861738, guid: f274b0babb3bf864796ef12d4d016dda,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114921365555054842, guid: f274b0babb3bf864796ef12d4d016dda,
+        type: 2}
+      propertyPath: avoidanceForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072055932404934, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997374915542642, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4770101674057050, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1583,6 +1644,48 @@ Prefab:
       propertyPath: path.Array.data[12]
       value: 
       objectReference: {fileID: 1696825843}
+    - target: {fileID: 50710133243768662, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: avoidanceForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: rotation_speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: collisionType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655492840590054, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1962273414580662, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: cone_distance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1962273414580662, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: num_whiskers
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61580693542954952, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
@@ -1815,8 +1918,27 @@ Prefab:
       propertyPath: rotation_speed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 50170303442861738, guid: f274b0babb3bf864796ef12d4d016dda,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114921365555054842, guid: f274b0babb3bf864796ef12d4d016dda,
+        type: 2}
+      propertyPath: avoidanceForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997374915542642, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072055932404934, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
+    - {fileID: 58825866460199038, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1044333671
@@ -2027,8 +2149,27 @@ Prefab:
       propertyPath: rotation_speed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 50170303442861738, guid: f274b0babb3bf864796ef12d4d016dda,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114921365555054842, guid: f274b0babb3bf864796ef12d4d016dda,
+        type: 2}
+      propertyPath: avoidanceForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072055932404934, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997374915542642, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
+    - {fileID: 58825866460199038, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1049385110
@@ -2148,6 +2289,43 @@ Prefab:
         type: 2}
       propertyPath: rotation_speed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 50710133243768662, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: avoidanceForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: collisionType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1962273414580662, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655492840590054, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: cone_distance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1962273414580662, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: num_whiskers
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61580693542954952, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
@@ -2342,6 +2520,43 @@ Prefab:
       propertyPath: rotation_speed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 50710133243768662, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: avoidanceForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: collisionType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655492840590054, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1962273414580662, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: cone_distance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1962273414580662, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: num_whiskers
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61580693542954952, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
@@ -2463,6 +2678,43 @@ Prefab:
         type: 2}
       propertyPath: rotation_speed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 50710133243768662, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: avoidanceForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: collisionType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655492840590054, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1962273414580662, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: cone_distance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1962273414580662, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: num_whiskers
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61580693542954952, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
@@ -2747,6 +2999,24 @@ Prefab:
       propertyPath: rotation_speed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 50170303442861738, guid: f274b0babb3bf864796ef12d4d016dda,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114921365555054842, guid: f274b0babb3bf864796ef12d4d016dda,
+        type: 2}
+      propertyPath: avoidanceForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997374915542642, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072055932404934, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
@@ -2760,11 +3030,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4021395114835956, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6.09
+      value: -6.13
       objectReference: {fileID: 0}
     - target: {fileID: 4021395114835956, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.62
+      value: 3.61
       objectReference: {fileID: 0}
     - target: {fileID: 4021395114835956, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2868,6 +3138,44 @@ Prefab:
         type: 2}
       propertyPath: rotation_speed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 50710133243768662, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: avoidanceForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: collisionType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1962273414580662, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655492840590054, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: cone_distance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: move_speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091402939409676, guid: 5bb070b61ced07342b64285107e2364b,
+        type: 2}
+      propertyPath: num_whiskers
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61580693542954952, guid: 5bb070b61ced07342b64285107e2364b, type: 2}
@@ -3339,26 +3647,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!1 &1646200699 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1997374915542642, guid: f274b0babb3bf864796ef12d4d016dda,
-    type: 2}
-  m_PrefabInternal: {fileID: 633636013}
---- !u!58 &1646200700
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1646200699}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 2
 --- !u!1 &1650662789
 GameObject:
   m_ObjectHideFlags: 0
@@ -3613,26 +3901,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!1 &1712586498 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1997374915542642, guid: f274b0babb3bf864796ef12d4d016dda,
-    type: 2}
-  m_PrefabInternal: {fileID: 1313289627}
---- !u!58 &1712586499
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1712586498}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 2
 --- !u!1 &1736400110
 GameObject:
   m_ObjectHideFlags: 0
@@ -3688,11 +3956,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4770101674057050, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6.09
+      value: -6.12
       objectReference: {fileID: 0}
     - target: {fileID: 4770101674057050, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.36
+      value: -3.3
       objectReference: {fileID: 0}
     - target: {fileID: 4770101674057050, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3797,6 +4065,34 @@ Prefab:
         type: 2}
       propertyPath: rotation_speed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 50170303442861738, guid: f274b0babb3bf864796ef12d4d016dda,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114921365555054842, guid: f274b0babb3bf864796ef12d4d016dda,
+        type: 2}
+      propertyPath: avoidanceForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114921365555054842, guid: f274b0babb3bf864796ef12d4d016dda,
+        type: 2}
+      propertyPath: collisionType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997374915542642, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072055932404934, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114921365555054842, guid: f274b0babb3bf864796ef12d4d016dda,
+        type: 2}
+      propertyPath: move_speed
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f274b0babb3bf864796ef12d4d016dda, type: 2}
